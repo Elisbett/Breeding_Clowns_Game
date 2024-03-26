@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class ClownsClass {
+public class ClownsClass implements Comparable {
     private String name;
     private int clownLevel;
 
@@ -45,7 +45,11 @@ public class ClownsClass {
                 break;
         }
         return tearsCost;
+    }
 
+    @Override
+    public int compareTo(Object theSecondClown) {
+        return this.clownLevel.compareTo(theSecondClown.clownLevel);
     }
 }
 // подстроить имена в избиении. пусть зависят от уровня клоуна
