@@ -13,7 +13,7 @@ public class World {
 
         ClownsClass clown = new ClownsClass(levelName.get(level), level);
         clownIndex.put(clownIndex.size(), clown);
-        System.out.println("Palju õnne! Sul sündis uus kloun " + clownIndex + "! Võte tema kasvutust tõsiselt!");
+        System.out.println("Palju õnne! Sul sündis uus kloun " + clownIndex + "! Võte tema kasvutust tõsiselt!"); // после заменить индекс на имя
     }
     public void deleteClowns (int clownIndeks, HashMap<Integer, ClownsClass> clownsClassHashMap) {
         if (clownsClassHashMap.containsKey(clownIndeks)) {
