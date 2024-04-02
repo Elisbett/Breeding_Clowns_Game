@@ -3,8 +3,7 @@ import java.util.*;
 import java.util.Timer;
 
 public class WorldLevel {
-    //Создать класс уровень мира. Он повышается при открытии нового клоуна lvl/2 + 1.
-    //к нему подключен клас клоунов, класс коробок, (класс рандомных штук)
+    //для каждого мира свои боксы и свои бонусы
 
     private int level;
     private int minClownLevel;
@@ -43,7 +42,8 @@ public class WorldLevel {
                 generateBox();
             }
         }, 0, 15 000 + (level - 1) * 5 000 ); //каждые 15 секунд + 5 секунд с повышением мира
-    }
+    } // надо в мейне вызвать этот метод для всех открытых миров
+    // и при открытии новых запускать его для них
     private void generateBox() {
         if (boxes.size() < 6) {
             Box box = new Box();
