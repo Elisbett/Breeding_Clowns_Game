@@ -28,7 +28,6 @@ public class ClownsClass implements Comparable {
     public double slapTheClown () {
         Random random = new Random();
         int tearsCost = (random.nextInt(8) + 2) * clownLevel;
-        // +++подумать, как считать уровни мира, как связать с планетой и какие бонусы это будет давать
         int phraseNumber = random.nextInt(3);
         switch (phraseNumber) {
             case 0:

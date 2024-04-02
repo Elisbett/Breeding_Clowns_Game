@@ -106,9 +106,6 @@ public class World {
         WorldLevel world4 = new WorldLevel(4, 19);
         WorldLevel world5 = new WorldLevel(5, 25);
         WorldLevel world6 = new WorldLevel(6, 31);
-
-
-
     }
 
 }
