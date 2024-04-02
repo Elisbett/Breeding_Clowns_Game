@@ -1,20 +1,17 @@
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class WorldLevel {
     //Создать класс уровень мира. Он повышается при открытии нового клоуна lvl/2 + 1.
     //к нему подключен клас клоунов, класс коробок, (класс рандомных штук)
 
-    //придумать, как удалять коробки из списка коробок при их открытии, когда появяется новый клоун
-
     private int level;
     private int minClownLevel;
     private int maxClownLevel = minClownLevel + 5;
     //boxes
-    private ArrayList<Box> boxes;
+    private HashMap<Integer, Box> boxes = new HashMap<Integer, Box>();
+    private ArrayList<Bonuses>() bonuses = new ArrayList<Bonuses>();
     private Timer timer;
 
     public WorldLevel(int level, int minClownLevel) {
@@ -22,10 +19,8 @@ public class WorldLevel {
         this.minClownLevel = minClownLevel;
     }
 
-    public int clownsLevelInTheBox(int maxOpenedClown) {
-        boxes.remove(0);
-                //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
+    public int clownsLevelInTheBox(int maxOpenedClown, int boxIndex) {
+        boxes.remove(boxIndex);
         if (maxOpenedClown <= minClownLevel + 2) {
             return minClownLevel;
         }
@@ -52,7 +47,7 @@ public class WorldLevel {
     private void generateBox() {
         if (boxes.size() < 6) {
             Box box = new Box();
-            boxes.add(box);
+            boxes.put(boxes.size(), box);
             System.out.println("Kukkus uus karp!");
             System.out.println("Praegu sul on " + boxes.size() + " karpi!");
         }
