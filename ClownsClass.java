@@ -1,14 +1,17 @@
 import java.util.Random;
 
+// antud klass on klounide objektide jaoks ning nende töötlemisega
 public class ClownsClass implements Comparable<ClownsClass> {
     private String name;
     private int clownLevel;
 
+    // konstruktor
     public ClownsClass(String name, int clownLevel) {
         this.name = name;
         this.clownLevel = clownLevel;
     }
 
+    //getterid ja setterid
     public String getName() {
         return name;
     }
@@ -25,9 +28,16 @@ public class ClownsClass implements Comparable<ClownsClass> {
         this.clownLevel = level;
     }
 
+    /**
+     * antud meetod simuleerib klouni peksmist ja arvutab välja teenitud pisarate arvu.
+     * @return - teenitud raha
+     */
     public double slapTheClown () {
+        // juhusliku arvu loomine
         Random random = new Random();
         int tearsCost = (random.nextInt(8) + 2) * clownLevel;
+
+        // genereerime mõned fraasid kasutaja jaoks
         int phraseNumber = random.nextInt(3);
         switch (phraseNumber) {
             case 0:
@@ -46,6 +56,11 @@ public class ClownsClass implements Comparable<ClownsClass> {
         return tearsCost;
     }
 
+    /**
+     * antud meetod võrdleb kahe klouni taset vastavalt nende tasemele
+     * @param theSecondClown the object to be compared.
+     * @return
+     */
     @Override
     public int compareTo(ClownsClass theSecondClown) {
         return Integer.compare(this.clownLevel, theSecondClown.clownLevel);
