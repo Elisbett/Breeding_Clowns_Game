@@ -1,5 +1,5 @@
 # Breeding_Clowns_Game 
-Autorid:\n
+Autorid:"\n"
 Daria Savtsenko, Elisabeth Serikova
 
 Projekti Põhjalik Kirjeldus:
