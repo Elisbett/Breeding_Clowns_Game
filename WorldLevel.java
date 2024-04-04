@@ -1,21 +1,21 @@
 import javax.swing.*;
 import java.util.*;
 import java.util.Timer;
-
+// antud klass on mõeldut tasemete moodustamiseks, ning nende töötlemiseks
 public class WorldLevel {
-    //для каждого мира свои боксы и свои бонусы
+    //iga maailma jaoks on omad karbid, boonused ning klounid (isiklik HashMap)
 
-    private int level;
-    private int minClownLevel;
-    private int maxClownLevel;
-    //boxes
-    private HashMap<Integer, BoxesClass> boxes = new HashMap<Integer, BoxesClass>();
-    private HashMap<Integer, ClownsClass> clownIndex;
+    private int level; // maailma tase
+    private int minClownLevel; // minimaalne kluni tase, mis kuulub selle maailmale
+    private int maxClownLevel; // maksimaalne klouni tase, mis kuulun selle maailmale
+    private HashMap<Integer, BoxesClass> boxes = new HashMap<Integer, BoxesClass>(); // maailma karbid
+    private HashMap<Integer, ClownsClass> clownIndex; // maailma klounid
+    private ArrayList<Bonuses> bonuses = new ArrayList<Bonuses>(); // maailma boonused
     private Timer timer;
-    //bonuses
-    private ArrayList<Bonuses> bonuses = new ArrayList<Bonuses>();
+    // muutuja, mida kasutame karpi loomisel, et igal karpil oli oma unikaalne indeks
     private int boxCounter = 0;
 
+    // konstruktor
     public WorldLevel(int level, int minClownLevel) {
         this.level = level;
         this.minClownLevel = minClownLevel;
@@ -24,6 +24,7 @@ public class WorldLevel {
         this.timer = new Timer();
     }
 
+    // getterid
     public int getLevel() {
         return level;
     }
@@ -32,9 +33,21 @@ public class WorldLevel {
         return boxes;
     }
 
-    //boxes
+    public HashMap<Integer, ClownsClass> getClownIndex() {
+        return clownIndex;
+    }
+
+    /**
+     * antud meetod simuleerib karpi avamist, genereerides klouni taseme vastavalt kasutaja tasemele ja juhuslikule tegurile
+     * @param maxOpenedClown - maksimaalne tase, millisega oli juba avatud kloun
+     * @param boxIndex - karpi indeks, mida soovime avada
+     * @return - uue klouni tase
+     */
     public int clownsLevelInTheBox(int maxOpenedClown, int boxIndex) {
+        // kustutame karpi
         boxes.remove(boxIndex);
+
+        // arvutame, millise tasemega võiks luua uue klouni
         if (maxOpenedClown <= minClownLevel + 2) {
             return minClownLevel;
         }
@@ -51,19 +64,21 @@ public class WorldLevel {
 
     }
 
-    public HashMap<Integer, ClownsClass> getClownIndex() {
-        return clownIndex;
-    }
-
+    /**
+     * antud meetod kasutab meetodi generateBox, et iga 15 sekundit genereerida uue karpi
+     */
     public void startBoxesGenerator() {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 generateBox();
             }
-        }, 0, 15000 + (level - 1) * 5000 ); //каждые 15 секунд + 5 секунд с повышением мира
-    } // надо в мейне вызвать этот метод для всех открытых миров
-    // и при открытии новых запускать его для них
+        }, 0, 15000 + (level - 1) * 5000 ); //iga 15 sekundit + 5 iga maailma taseme suurendamisel
+    } // kutsume seda World (meie main klassis) iga avatud maailmade jaoks
+
+    /**
+     * antud meetod loob uue karpi oma unikaalse indeksiga ning lisab seda HashMap'i
+     */
     public void generateBox() {
         if (boxes.size() < 6) {
             BoxesClass box = new BoxesClass();
@@ -73,7 +88,11 @@ public class WorldLevel {
         }
     }
 
-    //bonuses + добавить, чтобы первый раз был не сразу при запуске
+    //bonuses + pärast muuta seda meetodi, et boonus ei kukkuks mähgu alguses
+
+    /**
+     * antud meetod töötab nagu startBoxesGenerator, ehk kasutades meetodi addBonusToList, genereerib iga 3-4 minutid üht boonust
+     */
     public void bonusesGenerator() {
         Random random = new Random();
         int time = random.nextInt(2);
@@ -82,8 +101,12 @@ public class WorldLevel {
             public void run() {
                 addBonusToList();
             }
-        }, 0, 60000 * 3 + time * 30000); // падает каждые 3-4 мин
+        }, 0, 60000 * 3 + time * 30000); // boonus kukkub iga 3-4 minutid
     }
+
+    /**
+     * genereerib boonust ning lisab seda järjendisse
+     */
     private void addBonusToList() {
         if (bonuses.size() < 4) {
             Bonuses bonus = new Bonuses();
@@ -91,6 +114,11 @@ public class WorldLevel {
             System.out.println("Keegi valas popkorni maha( Tõsta!");
         }
     }
+
+    /**
+     * antud meetod korjab kõik boonused, mis on selles maailmas
+     * @return - tagastab pisarate arvu, mida kasutaja korjas boonustest
+     */
     public int collectBonuses() {
         int sum = 0;
         for (Bonuses element : bonuses) {
@@ -101,5 +129,5 @@ public class WorldLevel {
         System.out.println("Popkorni maha tõstmisest sa teenisid " + sum + " pisaraid)");
         return sum;
     }
-    //добавить это в кошелек
+    //main klassis (World) lisame seda meie rahakotti
 }
