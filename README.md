@@ -1,40 +1,109 @@
 # Breeding_Clowns_Game 
-Надо:
+**Autorid:**
+Daria Savtsenko, Elisabeth Serikova
 
-Создать класс уровень мира. Он повышается при открытии нового клоуна lvl/2 + 1.
+**Projekti Põhjalik Kirjeldus:**
+Projekti eesmärk on luua Java-mäng, mis loob klounide maailma, kus kasutajal on võimalus osta kloune, neid omavahel ristata, avada klounikarpe ning teenida pisaraid (raha). Programm koosneb mitmest klassist, mis on loodud erinevate funktsioonide jaoks, sealhulgas klounide, karbide, boonuste ja maailma taseme klassid.
 
-Создать класс клоунов: клоун(индекс_имя, уровень). индекс_имя генерируется переменной i: при появлении нового клоуна ему присваевается значение i, i++. уровень just to be, увеличивается при скрещивании двух одного уровня, второго убивает. 
+**Iga Klassi Kohta:**
+1. Bonuses:
+     - `tearsForBonuses(int level)`: genereerib ja tagastab pisarate arvu vastavalt tasemele ja juhuslikule tegurile.
 
-Методы для клоунов: 
+2. BoxesClass:
+   - Tühi klass, millel ei ole meetodeid. On tehtud graafilises etapis kasutamiseks.
 
-Избиение: при первом ударе запускается рандомайзер (от 0 до 7). На счет выпавшего удара клоун плачет и рандом запускается заново. Для каждого клоуна метод отдельный. клоун плачет (рандомно) дороже, если уровень мира выше. 
+3. ClownsClass:
+     - `slapTheClown()`: simuleerib klouni peksmist ja arvutab välja teenitud pisarate arvu.
+   - `compareTo meetod`: võrdleb kahe klouni taset vastavalt nende tasemele.
 
-избиение запускается по индекс_имя. 
+4. LevelInfo:
+     - `getCost()`: arvutab ja tagastab taseme maksumuse vastavalt sellele, milline on kasutajal taseme valimisel.
 
-Переменная валюты: +, если клоун наплакал; -, если мы что-то купили. 
+5. World:
+     - mitu meetodit, nagu `addClown`, `deleteClowns`, `breeding`, `buying`, mis vastutavad klounide lisamise, eemaldamise, ristamise ja ostmise eest vastavalt kasutaja tegevustele.
+   - `main` meetod: programmi käivitamine ja kasutajaliides.
 
-Класс коробок. Раз в рандомное время падает новая каробка. Чем выше уровень мира, тем выше(рандомно) может быть уровень выпавшего клоуна. 
+6. WorldLevel:
+     - `clownsLevelInTheBox(int maxOpenedClown, int boxIndex)`: genereerib klouni taseme vastavalt kasutaja tasemele ja juhuslikule tegurile.
+     - `startBoxesGenerator()`: algatab karbikoguja, mis loob uusi karpe vastavalt ajaintervallile.
+     - `generateBox()`: loob uue karbi.
+     - `bonusesGenerator()`: algatab boonuste genereerija, mis loob uusi boonuseid vastavalt ajaintervallile.
+     - `addBonusToList()`: lisab uue boonuse boonuste loendisse.
+     - `collectBonuses()`: kogub kõik boonused ja arvutab nende koguarvu pisarates.
 
-(?)Класс рандомных штук. По таймеру появляется маленькая штука, при нажатии на которую дается валюта. Дорожает по уровню мира. 
+**Projekti Tegemise Protsess:**
+Idee tekkimine, struktureerimine ja tööplaani loomine, koodi kirjutamine (klasside loomine, meetodite arendamine ja optimeerimine), testimine, parandamine
 
-Магазин: запускает падение каробки нужного уровня и списывает валюту. 
+**Iga Rühmaliikme Panus:**
+Proovisime paarisprogrameerimist. Tegime põhimõtteliselt kõik koos. Oli umbes 22 tundi paaristööd.
 
-Библиотека открытых клоунов. 
+**Mured:**
+Kuna see oli meie esimene kogemus selles projektitüübis, tekkis olukord, kus meil oli vaja päris palju tööd üle teha. Me proovisime enne klassi või meetodite loomist mõelda, kuidas me tahame seda kasutada ja kuidas seda teha efektiivsemalt, aga pärast tuli välja, et oli võimalik seda teha paremini. Oli raske kirjutada HashMap-i optimaalses vormis. 
 
-ArrayList из объектов класса клоун. 
+**Hinnang Töö Lõpptulemusele:**
+Oleme oma tulemusega rahul: kõik, mis oli plaanis, on tehtud. Küll tuleb arendada töö efektiivsust, kuna praegu mõjutab meie tööd töökogemuse puudus.
 
-Метод скрещивания в классе клонов: пользователь выбирает, кого срестить. Если одного уровня, то скрещивает, если разного то пошли мы *****. 
+**Selgitus ja/või Näited Testimisest:**
+Klassis World on pärast kommentaari "//testimine" kirjeldatud mitmeid testimise näiteid ja protseduure, mis on läbi viidud programmi osade eraldi ja tervikuna toimimise kontrollimiseks. 
 
-Поставить ограничение: если закрытых коробок > 6, то они рандомно не падают. Если нескрещаных клоунов одного уровня > 4, то рандомно коробки не падают. Покупать можно. 
+//testimine
 
-Макс лвл клоуна - 6. потом на другую планету. 
+int ourWorldLevel = 1;
+WorldLevel currentWorld = ourWorlds.get(ourWorldLevel);
+HashMap<Integer, ClownsClass> currentWorldClowns = currentWorld.getClownIndex();
 
-Что надо сделать: 
+// Testime klounide loomist ja lisamist maailma tasemele
 
-Класс мира 
+maxOpenedClown += addClown(6, currentWorldClowns, levelInfoMap, maxOpenedClown);
+maxOpenedClown += addClown(6, currentWorldClowns, levelInfoMap, maxOpenedClown);
 
-Класс клоунов 
+// Testime klounide ristamist
 
-Метод избивать 
+breeding(0, 1, currentWorldClowns, levelInfoMap, maxOpenedClown, ourWorlds, ourWorldLevel);
 
-Метод скрещивать 
+// Testime klounide ostmist ja rahakoti vähendamist
+
+maxOpenedClown = addClown(2, currentWorldClowns, levelInfoMap, maxOpenedClown);
+maxOpenedClown = addClown(2, currentWorldClowns, levelInfoMap, maxOpenedClown);
+
+// Testime klounide ristamist uuesti pärast ostu
+
+breeding(0, 1, currentWorldClowns, levelInfoMap, maxOpenedClown, ourWorlds, ourWorldLevel);
+
+// Testime klounide peksmist ja pisarate teenimist
+
+currentWorldClowns.get(0).slapTheClown();
+
+// Testime uue klouni genereerimist pärast karbikukkumist
+
+maxOpenedClown = addClown(6, currentWorldClowns, levelInfoMap, maxOpenedClown);
+
+// Testime klouni peksmist ja rahakoti suurenemist
+
+moneyInWallet += currentWorldClowns.get(1).slapTheClown();
+
+// Kuvame klounide andmed pärast kõiki tegevusi
+
+System.out.println("Näitame meie HashMapi:");
+for (Integer key : currentWorldClowns.keySet()) {
+    ClownsClass value = currentWorldClowns.get(key);
+    System.out.println("Võti: " + key + ", Väärtus: " + value.getName());
+}
+currentWorld.startBoxesGenerator();
+
+// Simuleerime aja möödumist ja uue klouni genereerimist karbist
+
+Timer timer = new Timer();
+timer.schedule(new TimerTask() {
+    @Override
+    public void run() {
+        int newClownLevel = currentWorld.clownsLevelInTheBox(maxOpenedClown, 0);
+        System.out.println(newClownLevel + " Uus tase, mis kukkus karbist");
+        maxOpenedClown = addClown(newClownLevel, currentWorldClowns, levelInfoMap, maxOpenedClown);
+    }
+}, 1 * 60 * 1000); // 1 minut millisekundites
+
+// Testime klounide kogumist boonustest
+
+int collectedTears = currentWorld.collectBonuses();
+System.out.println("Kogusime " + collectedTears + " pisaraid!");
