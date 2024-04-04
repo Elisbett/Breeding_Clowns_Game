@@ -47,34 +47,43 @@ Oleme oma tulemusega rahul: kõik, mis oli plaanis, on tehtud. Küll tuleb arend
 Klassis World on pärast kommentaari "//testimine" kirjeldatud mitmeid testimise näiteid ja protseduure, mis on läbi viidud programmi osade eraldi ja tervikuna toimimise kontrollimiseks. 
 
 //testimine
+
 int ourWorldLevel = 1;
 WorldLevel currentWorld = ourWorlds.get(ourWorldLevel);
 HashMap<Integer, ClownsClass> currentWorldClowns = currentWorld.getClownIndex();
 
 // Testime klounide loomist ja lisamist maailma tasemele
+
 maxOpenedClown += addClown(6, currentWorldClowns, levelInfoMap, maxOpenedClown);
 maxOpenedClown += addClown(6, currentWorldClowns, levelInfoMap, maxOpenedClown);
 
 // Testime klounide ristamist
+
 breeding(0, 1, currentWorldClowns, levelInfoMap, maxOpenedClown, ourWorlds, ourWorldLevel);
 
 // Testime klounide ostmist ja rahakoti vähendamist
+
 maxOpenedClown = addClown(2, currentWorldClowns, levelInfoMap, maxOpenedClown);
 maxOpenedClown = addClown(2, currentWorldClowns, levelInfoMap, maxOpenedClown);
 
 // Testime klounide ristamist uuesti pärast ostu
+
 breeding(0, 1, currentWorldClowns, levelInfoMap, maxOpenedClown, ourWorlds, ourWorldLevel);
 
 // Testime klounide peksmist ja pisarate teenimist
+
 currentWorldClowns.get(0).slapTheClown();
 
 // Testime uue klouni genereerimist pärast karbikukkumist
+
 maxOpenedClown = addClown(6, currentWorldClowns, levelInfoMap, maxOpenedClown);
 
 // Testime klouni peksmist ja rahakoti suurenemist
+
 moneyInWallet += currentWorldClowns.get(1).slapTheClown();
 
 // Kuvame klounide andmed pärast kõiki tegevusi
+
 System.out.println("Näitame meie HashMapi:");
 for (Integer key : currentWorldClowns.keySet()) {
     ClownsClass value = currentWorldClowns.get(key);
@@ -83,6 +92,7 @@ for (Integer key : currentWorldClowns.keySet()) {
 currentWorld.startBoxesGenerator();
 
 // Simuleerime aja möödumist ja uue klouni genereerimist karbist
+
 Timer timer = new Timer();
 timer.schedule(new TimerTask() {
     @Override
