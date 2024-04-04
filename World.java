@@ -238,7 +238,7 @@ public class World {
                     //"Для того, чтобы скрестить их, нажми букву 'X'" +
                     "Nüüd on sul kaks samal tasemel klouni!\n" +
                     "Nende vahel sähvatas kire säde!\n" +
-                    "Aidake ja viige nende unistus teoks!\n" +
+                    "Aita ja vii nende unistus teoks!\n" +
                     "Nende ületamiseks vajutage 'X'");
             char firstBreeding = scanner.next().charAt(0);
             if (firstBreeding == 'X') {
@@ -348,8 +348,8 @@ public class World {
 
                         for (int i = 0; i < openedWorldsList.length; i++) {
                             if (openedWorldsList[i]) {
-                                System.out.println("Мир " + (i + 1) + " открыт");
-                                // Saab lisada muud meetodid lisateabe kuvamiseks maailma kohta, kui vajalik          
+                                System.out.println("Maailm " + (i + 1) + " oli avatud");
+                                // Saab lisada muud meetodid lisateabe kuvamiseks maailma kohta, kui vajalik
                             }
                         }
                         ourWorldLevel = scanner.nextInt();
