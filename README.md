@@ -1,12 +1,11 @@
 # Breeding_Clowns_Game 
-Autorid:"\n"
+**Autorid:**
 Daria Savtsenko, Elisabeth Serikova
 
-Projekti Põhjalik Kirjeldus:
+**Projekti Põhjalik Kirjeldus:**
 Projekti eesmärk on luua Java-mäng, mis loob klounide maailma, kus kasutajal on võimalus osta kloune, neid omavahel ristata, avada klounikarpe ning teenida pisaraid (raha). Programm koosneb mitmest klassist, mis on loodud erinevate funktsioonide jaoks, sealhulgas klounide, karbide, boonuste ja maailma taseme klassid.
 
-Iga Klassi Kohta Eraldi:
-
+**Iga Klassi Kohta:**
 1. Bonuses:
      - `tearsForBonuses(int level)`: genereerib ja tagastab pisarate arvu vastavalt tasemele ja juhuslikule tegurile.
 
@@ -15,7 +14,7 @@ Iga Klassi Kohta Eraldi:
 
 3. ClownsClass:
      - `slapTheClown()`: simuleerib klouni peksmist ja arvutab välja teenitud pisarate arvu.
-   - **compareTo meetod**: võrdleb kahe klouni taset vastavalt nende tasemele.
+   - `compareTo meetod`: võrdleb kahe klouni taset vastavalt nende tasemele.
 
 4. LevelInfo:
      - `getCost()`: arvutab ja tagastab taseme maksumuse vastavalt sellele, milline on kasutajal taseme valimisel.
@@ -32,24 +31,22 @@ Iga Klassi Kohta Eraldi:
      - `addBonusToList()`: lisab uue boonuse boonuste loendisse.
      - `collectBonuses()`: kogub kõik boonused ja arvutab nende koguarvu pisarates.
 
-Projekti Tegemise Protsess:
+**Projekti Tegemise Protsess:**
 Idee tekkimine, struktureerimine ja tööplaani loomine, koodi kirjutamine (klasside loomine, meetodite arendamine ja optimeerimine), testimine, parandamine
 
-Iga Rühmaliikme Panus:
+**Iga Rühmaliikme Panus:**
 Proovisime paarisprogrameerimist. Tegime põhimõtteliselt kõik koos. Oli umbes 22 tundi paaristööd.
 
-
-
-Tegemise Mured:
+**Mured:**
 Kuna see oli meie esimene kogemus selles projektitüübis, tekkis olukord, kus meil oli vaja päris palju tööd üle teha. Me proovisime enne klassi või meetodite loomist mõelda, kuidas me tahame seda kasutada ja kuidas seda teha efektiivsemalt, aga pärast tuli välja, et oli võimalik seda teha paremini. Oli raske kirjutada HashMap-i optimaalses vormis. 
 
-Hinnang Töö Lõpptulemusele:
+**Hinnang Töö Lõpptulemusele:**
 Oleme oma tulemusega rahul: kõik, mis oli plaanis, on tehtud. Küll tuleb arendada töö efektiivsust, kuna praegu mõjutab meie tööd töökogemuse puudus.
 
-Selgitus ja/või Näited Testimisest:
-Klassis World on pärast kommentaari "//testim vse" kirjeldatud mitmeid testimise näiteid ja protseduure, mis on läbi viidud programmi osade eraldi ja tervikuna toimimise kontrollimiseks. 
+**Selgitus ja/või Näited Testimisest:**
+Klassis World on pärast kommentaari "//testimine" kirjeldatud mitmeid testimise näiteid ja protseduure, mis on läbi viidud programmi osade eraldi ja tervikuna toimimise kontrollimiseks. 
 
-//testim vse
+//testimine
 int ourWorldLevel = 1;
 WorldLevel currentWorld = ourWorlds.get(ourWorldLevel);
 HashMap<Integer, ClownsClass> currentWorldClowns = currentWorld.getClownIndex();
