@@ -3,10 +3,11 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 public class World {
+    private static int clownCounter = 0;
     //klouni lisamise meetod
     public static int addClown(int level, HashMap<Integer, ClownsClass> clownIndex, HashMap<Integer, LevelInfo> levelInfoMap, int maxOpenedClown) {
         ClownsClass clown = new ClownsClass(levelInfoMap.get(level).getName(), level);
-        clownIndex.put(clownIndex.size(), clown);
+        clownIndex.put(clownCounter++, clown);
         System.out.println("Palju õnne! Sul sündis uus kloun " + clown.getName() + "! Võta tema kasvutust tõsiselt!");
 
         //maksimaalse võimalikku koluni taseme muutuja
