@@ -144,7 +144,6 @@ public class World {
             ourWorlds.put(6, new WorldLevel(6, 31));
 
             //millised maailmad on juba kasutajaga avatud
-            // при помощи этого массива будем держать информацию по поводу открытых миров
             boolean[] openedWorldsList = {true, false, false, false, false, false};
 
             //Start
@@ -243,13 +242,13 @@ public class World {
                     "Nende ületamiseks vajutage 'X'");
             char firstBreeding = scanner.next().charAt(0);
             if (firstBreeding == 'X') {
-                //System.out.println("Вот клоуны, которых ты можешь сейчас скрестить:");
+                //System.out.println("Вот клоуны, которых ты можешь сейчас скреститьы:");
                 System.out.println("Siin on klounid, keda sa saad ristida");
                 for (Integer key : currentWorldClowns.keySet()) {
                     ClownsClass value = currentWorldClowns.get(key);
                     System.out.println("Indeks: " + key + " Klouni nimi: " + value.getName());
                 }
-                //System.out.println("Вставь индекс первого клоуна для скрещивания.");
+                //System.out.println("Скопируй и вставь индекс первого клоуна для скрещивания.");
                 System.out.println("Sisesta esimese klouni indeks ristamiseks");
                 int cloun1Index = scanner.nextInt();
                 //System.out.println("А теперь выбери его пару.");
@@ -265,7 +264,7 @@ public class World {
             //mäng
             currentWorld.startBoxesGenerator();
             while (true) {
-                System.out.println("Siin on teie klounid selles maailmas:" + ourWorldLevel);
+                System.out.println("Siin on teie klounid selles maailmas: " + ourWorldLevel);
                 for (Integer key : currentWorldClowns.keySet()) {
                     ClownsClass value = currentWorldClowns.get(key);
                     System.out.println("Indeks: " + key + " Klouni nimi: " + value.getName());
@@ -295,12 +294,9 @@ public class World {
                         maxOpenedClown = addClown(newLevel, currentWorldClowns, levelInfoMap, maxOpenedClown);
                         break;
                     case 'X': //aretus
-                        System.out.println(//"Вы решили совокупить двух клоунов, надеюсь, у вас есть двое, с одинаковым уровнем, \n" +
-                                //"не то у вас не получиться воспроизвести свой потайные желания)" +
-                                "Otsustasid paaritada kaks klouni, loodetavasti sul on kaks, kes on samal tasemel,\n" +
+                        System.out.println("Otsustasid paaritada kaks klouni, loodetavasti sul on kaks, kes on samal tasemel,\n" +
                                 "muidu ei õnnestu su salasoove teostada)");
-                        System.out.println(//"Пожалуйста, выберите клоунов, которых хотите совокупить из своего списка: " +
-                                "Palun vali klounid, keda soovid paaritada oma nimekirjast: ");
+                        System.out.println("Palun vali klounid, keda soovid paaritada oma nimekirjast: ");
                         //print nimekiri
                         for (Integer key : currentWorldClowns.keySet()) {
                             ClownsClass value = currentWorldClowns.get(key);
@@ -327,9 +323,7 @@ public class World {
                         System.out.println("Otsustasid käia mustal turul, et osta rohkem kloune.");
                         System.out.println("Loodetavasti teil on selle jaoks piisavalt vahendeid.");
 
-                        System.out.println("Siin on nimekiri klounidest, mida saad osta:");
-
-                        //kui maxOpenedClown < 5, siis kirjutame ainult esimese elemendi
+                        System.out.println("Siin on nimekiri klounidest, mida saad osta: ");
                         if (maxOpenedClown < 5) {
                             System.out.println("Nimi: Peeter Paanika" +
                                     " Lvl: 1" +
@@ -346,14 +340,17 @@ public class World {
                         }
                         System.out.println("Valige klouni tase, et teda osta!");
                         int clownLevelForBuying = scanner.nextInt();
+
                         buying(moneyInWallet, clownLevelForBuying, levelInfoMap, currentWorldClowns, maxOpenedClown);
                         break;
                     case 'G': //vali maalma, kus tahad mängida
                         System.out.println("Siin on maailmad, mida oled avanud:");
+
                         for (int i = 0; i < openedWorldsList.length; i++) {
                             if (openedWorldsList[i]) {
                                 System.out.println("Мир " + (i + 1) + " открыт");
-                                // Saab lisada muud meetodid lisateabe kuvamiseks maailma kohta, kui vajalik                            }
+                                // Saab lisada muud meetodid lisateabe kuvamiseks maailma kohta, kui vajalik          
+                            }
                         }
                         ourWorldLevel = scanner.nextInt();
                         ourWorldLevel = ourWorldLevel;
@@ -414,7 +411,7 @@ public class World {
         maxOpenedClown = addClown(newClownLevel, currentWorldClowns, levelName, maxOpenedClown);
 
         System.out.println(moneyInWallet + " money");
+
 */
     }
-
 }
