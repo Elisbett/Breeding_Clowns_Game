@@ -94,5 +94,6 @@ timer.schedule(new TimerTask() {
 }, 1 * 60 * 1000); // 1 minut millisekundites
 
 // Testime klounide kogumist boonustest
+
 int collectedTears = currentWorld.collectBonuses();
 System.out.println("Kogusime " + collectedTears + " pisaraid!");
