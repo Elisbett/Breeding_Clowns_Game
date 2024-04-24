@@ -11,7 +11,6 @@ public class World {
         System.out.println("Palju õnne! Sul sündis uus kloun " + clown.getName() + "! Võta tema kasvutust tõsiselt!");
 
         //maksimaalse võimalikku koluni taseme muutuja
-        // переменная для максимальный уровень для выпадения клоунов из коробки
         if (level > maxOpenedClown) {
             maxOpenedClown = level;
             //BSystem.out.println(maxOpenedClown + " kloun max lvl");
@@ -149,7 +148,7 @@ public class World {
             //Start
             Scanner scanner = new Scanner(System.in);
             //tervitus
-            System.out.println("Tere tuulemas Clown Beerading Game-is!\n" +
+            System.out.println("Tere tuulemas Clown Breeding Game-is!\n" +
                     "Pakkun sulle läbida enne mängu alustamist lühikese õpetuse!");
 
             //lühike koolitus:
@@ -238,7 +237,7 @@ public class World {
                     //"Для того, чтобы скрестить их, нажми букву 'X'" +
                     "Nüüd on sul kaks samal tasemel klouni!\n" +
                     "Nende vahel sähvatas kire säde!\n" +
-                    "Aita ja vii nende unistus teoks!\n" +
+                    "Aidata ja muuta nende unistused reaalsuseks!\n" +
                     "Nende ületamiseks vajutage 'X'");
             char firstBreeding = scanner.next().charAt(0);
             if (firstBreeding == 'X') {
@@ -348,7 +347,7 @@ public class World {
 
                         for (int i = 0; i < openedWorldsList.length; i++) {
                             if (openedWorldsList[i]) {
-                                System.out.println("Maailm " + (i + 1) + " oli avatud");
+                                System.out.println("Maailm " + (i + 1) + " on avatud");
                                 // Saab lisada muud meetodid lisateabe kuvamiseks maailma kohta, kui vajalik
                             }
                         }
